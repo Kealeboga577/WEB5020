@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Punky's Bakery - freshly baked goods made with love and care.">
+    <link rel="stylesheet" href="css/stylesheet.css">
+    <title>Home Page | Punky's Bakery</title>
+</head>
+<body>
+    <header class="site-header">
+        <div class="logo-wrap">
+            <img src="images/punkys_bakery_logo.png" alt="Punky's Bakery logo" class="logo">
+        </div>
+        <h1>Welcome to Punky's Bakery</h1>
+    </header>
+ 
+    <nav class="site-nav">
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+        <ul id="navMenu">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="service.html">Service</a></li>
+            <li><a href="gallary.html">Gallery</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+ 
+    <main>
+        <section class="intro">
+            <h2>Freshly Baked With Love</h2>
+            <p>Freshly baked goods made with love &amp; care from our baker, Ms. Monotwe. Here are some of our baked goods.</p>
+        </section>
+ 
+        <section class="gallery-preview">
+            <figure>
+                <img src="images/images.jpg" alt="Freshly baked bread from Punky's Bakery">
+            </figure>
+            <figure>
+                <img src="images/images2.jpg" alt="Assorted pastries from Punky's Bakery">
+            </figure>
+            <figure>
+                <img src="images/images3.jpg" alt="Decorated cupcakes from Punky's Bakery">
+            </figure>
+        </section>
+ 
+        <p class="see-more">See more of our baked goods in the gallery. <a href="gallary.html">Click here</a> to view the full gallery.</p>
+ 
+        <section class="video-section">
+            <h2>Watch Us Bake</h2>
+            <p>Take a look behind the scenes at how we make our baked goods.</p>
+            <video width="400" height="300" controls poster="images/punkys_bakery_logo.png">
+                <source src="images/VID-20260918-WA0007.mp4" type="video/mp4">
+                Sorry, your browser doesn't support embedded videos.
+            </video>
+        </section>
+    </main>
+ 
+    <footer class="site-footer">
+        <p>&copy; 2026 Punky's Bakery — ST10512970</p>
+        <button id="backToTop" aria-label="Back to top">&uarr;</button>
+    </footer>
+ 
+    <script src="js/script.js"></script>
+</body>
