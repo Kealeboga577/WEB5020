@@ -1,0 +1,31 @@
+HTML structure & semantics
+•	lang="eng" → lang="en" on every page (a real, standard language code)
+•	Removed the deprecated <center> and <u> tags and the uppercase <H1> — replaced with proper <h1>/<h2> and CSS for centering/underlining
+•	Fixed heading misuse: your <h3> tags were being used for body paragraphs and even wrapped around a <ul>'s <li> items on the Service page .Content is now in <p> tags, with real <h2> section headings
+What was removed
+•	All inline style="..." attributes (image sizing, the pink background-color: rgb(255,192,203) on every page) — moved into the shared stylesheet
+•	The literal "|" characters typed into the nav link text (HOME|, ABOUT|, etc.) — separation is now done with CSS
+•	The "Please find the following as a navigation..." helper sentence — no longer needed since the nav is a real navigation bar at the top, not buried at the bottom of the page
+•	The empty, non-functional <a href="PDF FILE"></a> on the gallery page
+•	The odd "5L 10L and 20L" sizing text on the gallery page (didn't fit baked goods — flagged for you to clarify)
+•	The duplicate gallery page paste (you sent it twice, identical)
+Accessibility
+•	Every <img> now has descriptive alt text (originally none did)
+•	The hamburger menu button and back-to-top button have aria-labels
+•	The mobile nav toggle has aria-expanded so screen readers know if it's open
+CSS / visual design
+•	Built css/stylesheet.css from scratch — none of your pages linked a stylesheet except home.html, and even that had no actual styling written yet
+•	Cream/brown/gold color palette (replacing the pink background) with CSS variables so colors are consistent and easy to change later
+•	Responsive layout: flexbox/grid that reflows for tablet and phone screens, using @media queries
+•	Hover/zoom effects on gallery images and nav links, card-style shadows and rounded corners on content sections
+JavaScript (js/script.js) — the interactive layer
+•	Mobile hamburger menu: nav collapses into a toggle button on small screens
+•	Active-page highlighting: automatically detects which page you're on and highlights it in the nav — no manual class needed per page
+•	Back-to-top button: fades in after scrolling, smooth-scrolls up on click
+•	Lightbox (gallery page only): click any photo to see it enlarged; close with the ✕, clicking outside it, or Esc
+Page-specific content fixes
+•	Home: fixed the broken <video><source src="images/"> (empty, no file) → now points to videos/bakery-process.mp4 with a type attribute and fallback text; removed a repeated phrase in the intro paragraph
+•	About: "Ms.Monotwe" → "Ms. Monotwe", "Queens Cakes" → "queen cakes"
+•	Contact: phone and email are now clickable tel:/mailto: links instead of plain text
+•	Service: the invalid <h3>-wrapped list fixed into a proper <ul>, each item styled with a checkmark
+Everything not mentioned (your actual page copy, business info, image files) was left untouched.
