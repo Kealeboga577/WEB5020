@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="A gallery of freshly baked goods from Punky's Bakery.">
     <link rel="stylesheet" href="css/stylesheet.css">
+    <script src="js/script.js"></script>
     <title>Gallery | Punky's Bakery</title>
 </head>
 <body>
@@ -50,11 +51,29 @@
         </section>
     </main>
 
-    <footer class="site-footer">
-        <p>&copy; 2026 Punky's Bakery — ST10512970</p>
-        <button id="backToTop" aria-label="Back to top">&uarr;</button>
+    <footer>
+        <p>&copy;ST10512970</p>
+        <p id="datetime"></p>
+        
     </footer>
-
-    <script src="js/script.js"></script>
+    <script>
+        // JavaScript code for the live clock
+        function updateDateTime() {
+            const now = new Date();
+            const options = { 
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric', 
+                hour: '2-digit', 
+                minute: '2-digit', 
+                second: '2-digit'
+            };
+            document.getElementById('datetime').textContent = now.toLocaleDateString('en-US', options);
+        }
+        // Update the clock every second
+        updateDateTime(); // Initial call to display the clock immediately
+        setInterval(updateDateTime, 1000);
+    </script>
 </body>
 </html>
