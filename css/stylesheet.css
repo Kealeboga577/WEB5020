@@ -14,6 +14,7 @@
     --shadow: 0 4px 14px rgba(62, 39, 35, 0.15);
     --radius: 12px;
     --transition: 0.25s ease-in-out;
+    --topbar-height: 2.25rem;
 }
 
 * {
@@ -31,6 +32,25 @@ body {
 
 h1, h2 {
     font-family: Georgia, 'Times New Roman', serif;
+}
+
+/* ---------- Top bar (live date & time) ---------- */
+.top-bar {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    height: var(--topbar-height);
+    line-height: var(--topbar-height);
+    padding: 0 1rem;
+    text-align: center;
+    background-color: var(--gold);
+    color: var(--brown-dark);
+    font-size: 0.9rem;
+    font-weight: bold;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 /* ---------- Header ---------- */
@@ -60,7 +80,7 @@ h1, h2 {
 .site-nav {
     background-color: var(--brown-dark);
     position: sticky;
-    top: 0;
+    top: var(--topbar-height);
     z-index: 10;
     box-shadow: var(--shadow);
 }
@@ -231,6 +251,10 @@ main {
 
 /* ---------- Responsive: tablet & mobile ---------- */
 @media (max-width: 700px) {
+    .top-bar {
+        font-size: 0.8rem;
+    }
+
     .nav-toggle {
         display: flex;
     }
@@ -334,65 +358,144 @@ main {
     color: var(--gold);
 }
 
-/* ---------- Gallery page ---------- */
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 1.25rem;
+/* ---------- Gallery page: slideshow ---------- */
+.slideshow {
+    max-width: 720px;
+    margin: 0 auto;
 }
 
-.gallery-item {
-    margin: 0;
-    overflow: hidden;
+.slides {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    background-color: var(--brown-dark);
     border-radius: var(--radius);
     box-shadow: var(--shadow);
-    background-color: var(--white);
-    cursor: pointer;
+    overflow: hidden;
 }
 
-.gallery-item img {
-    width: 100%;
-    height: 160px;
-    object-fit: cover;
-    display: block;
-    transition: transform var(--transition);
-}
-
-.gallery-item:hover img,
-.gallery-item img:focus {
-    transform: scale(1.08);
-}
-
-/* Lightbox (click-to-enlarge on the gallery page) */
-.lightbox-overlay {
-    position: fixed;
+.slide {
+    position: absolute;
     inset: 0;
-    background-color: rgba(62, 39, 35, 0.88);
+    margin: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease-in-out, visibility 0.4s;
+}
+
+.slide.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* "contain" shows each photo in full, uncropped */
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+.slide-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    width: 44px;
+    height: 44px;
+    border: none;
+    border-radius: 50%;
+    background-color: rgba(62, 39, 35, 0.65);
+    color: var(--cream);
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color var(--transition), color var(--transition);
+}
+
+.slide-btn:hover,
+.slide-btn:focus {
+    background-color: var(--gold);
+    color: var(--brown-dark);
+}
+
+.slide-btn.prev {
+    left: 0.75rem;
+}
+
+.slide-btn.next {
+    right: 0.75rem;
+}
+
+.slide-controls {
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 100;
+    gap: 1rem;
+    margin-top: 1rem;
 }
 
-.lightbox-overlay[hidden] {
-    display: none;
-}
-
-.lightbox-overlay img {
-    max-width: 90%;
-    max-height: 80%;
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-}
-
-.lightbox-overlay button {
-    position: absolute;
-    top: 1.5rem;
-    right: 1.5rem;
-    background: none;
-    border: none;
+#slidePlay {
+    background-color: var(--brown-dark);
     color: var(--cream);
-    font-size: 2rem;
-    line-height: 1;
+    border: none;
+    border-radius: 20px;
+    padding: 0.4rem 1.1rem;
+    font-weight: bold;
     cursor: pointer;
+    transition: background-color var(--transition), color var(--transition);
+}
+
+#slidePlay:hover,
+#slidePlay:focus {
+    background-color: var(--gold);
+    color: var(--brown-dark);
+}
+
+#slideCounter {
+    font-weight: bold;
+    color: var(--brown-medium);
+}
+
+.slide-dots {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.6rem;
+    margin-top: 0.9rem;
+}
+
+.dot {
+    width: 14px;
+    height: 14px;
+    padding: 0;
+    border: 2px solid var(--gold);
+    border-radius: 50%;
+    background-color: transparent;
+    cursor: pointer;
+    transition: background-color var(--transition), transform var(--transition);
+}
+
+.dot:hover {
+    transform: scale(1.3);
+}
+
+.dot.active {
+    background-color: var(--gold);
+}
+
+/* Visitors who ask their device for less motion get an instant swap instead of a fade */
+@media (prefers-reduced-motion: reduce) {
+    .slide {
+        transition: none;
+    }
+}
+
+@media (max-width: 700px) {
+    .slides {
+        aspect-ratio: 1 / 1;
+    }
+
+    .slide-btn {
+        width: 38px;
+        height: 38px;
+    }
 }
