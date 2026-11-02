@@ -15,6 +15,7 @@
     --radius: 12px;
     --transition: 0.25s ease-in-out;
     --topbar-height: 2.25rem;
+    --error: #a63d2f;
 }
 
 * {
@@ -383,4 +384,248 @@ main {
 
 .gallery-item:hover img {
     transform: scale(1.08);
+}
+
+/* ---------- Inquiry page (form) ---------- */
+.inquiry-card {
+    background-color: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 2rem 1.75rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.inquiry-card h2 {
+    text-align: center;
+    color: var(--brown-medium);
+    margin-bottom: 0.25rem;
+}
+
+.form-note {
+    text-align: center;
+    color: var(--brown-medium);
+    margin-bottom: 1.5rem;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.form-group {
+    margin-bottom: 1.1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.35rem;
+    font-weight: bold;
+    color: var(--brown-dark);
+}
+
+.required {
+    color: var(--error);
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem 0.9rem;
+    font: inherit;
+    color: var(--brown-dark);
+    background-color: var(--cream);
+    border: 2px solid var(--cream-dark);
+    border-radius: 8px;
+    transition: border-color var(--transition), box-shadow var(--transition), background-color var(--transition);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #8c7563;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--gold);
+    background-color: var(--white);
+    box-shadow: 0 0 0 3px rgba(201, 151, 58, 0.3);
+}
+
+.form-group input:user-invalid,
+.form-group textarea:user-invalid {
+    border-color: var(--error);
+}
+
+.form-group textarea {
+    min-height: 140px;
+    resize: vertical;
+}
+
+.field-hint {
+    display: block;
+    margin-top: 0.3rem;
+    font-size: 0.85rem;
+    color: var(--brown-medium);
+}
+
+.submit-btn {
+    width: 100%;
+    margin-top: 0.5rem;
+    padding: 0.85rem 1rem;
+    font: inherit;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    color: var(--cream);
+    background-color: var(--brown-dark);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color var(--transition), color var(--transition), transform var(--transition);
+}
+
+.submit-btn:hover:not(:disabled),
+.submit-btn:focus-visible {
+    background-color: var(--gold);
+    color: var(--brown-dark);
+}
+
+.submit-btn:active:not(:disabled) {
+    transform: translateY(1px);
+}
+
+.submit-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.form-status {
+    margin-top: 1rem;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.form-status:empty {
+    display: none;
+}
+
+.form-status.info {
+    background-color: var(--cream);
+    color: var(--brown-medium);
+    border-left: 4px solid var(--brown-medium);
+}
+
+.form-status.success {
+    background-color: var(--cream-dark);
+    color: var(--brown-dark);
+    border-left: 4px solid var(--gold);
+}
+
+.form-status.error {
+    background-color: #fbeae7;
+    color: var(--error);
+    border-left: 4px solid var(--error);
+}
+
+@media (max-width: 600px) {
+    .inquiry-card {
+        padding: 1.5rem 1.1rem;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+}
+
+* {box-sizing:border-box}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+/* Hide the images by default */
+.mySlides {
+  display: none;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
 }
