@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+    <meta name="description" content=" ">
+    <meta name="keywords" content=" ">
+    <meta name="author" content="Kealeboga Ncube">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/stylesheet.css">
+    <script src="js/script.js"></script>
+    <title>Inquiry | Punky's Bakery</title>
+</head>
+<body>
+    <div class="top-bar">
+        <time id="liveClock">&nbsp;</time>
+    </div>
+
+    <header class="site-header">
+        <div class="logo-wrap">
+            <img src="images/punkys_bakery_logo.png" alt="Punky's Bakery logo" class="logo">
+        </div>
+        <h1>Make an Inquiry</h1>
+    </header>
+
+    <nav class="site-nav">
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+        <ul id="navMenu">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="service.html">Service</a></li>
+            <li><a href="gallary.html">Gallery</a></li>
+            <li><a href="inquiry.html">Inquiry</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section class="inquiry-card">
+            <h2>Leave Your Details</h2>
+            <p class="form-note">Complete all fields marked with an asterisk (<span class="required">*</span>) and we'll get back to you.</p>
+
+            <form id="inquiryForm" method="post">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstName">Name <span class="required" aria-hidden="true">*</span></label>
+                        <input type="text" id="firstName" name="name" placeholder="Enter your name" autocomplete="given-name" required minlength="2" maxlength="50">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="surname">Surname <span class="required" aria-hidden="true">*</span></label>
+                        <input type="text" id="surname" name="surname" placeholder="Enter your surname" autocomplete="family-name" required minlength="2" maxlength="50">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address <span class="required" aria-hidden="true">*</span></label>
+                    <input type="email" id="email" name="email" placeholder="example@email.com" autocomplete="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Telephone Number <span class="required" aria-hidden="true">*</span></label>
+                    <input type="tel" id="phone" name="phone" placeholder="+27 82 123 4567" autocomplete="tel" inputmode="tel" required minlength="9" maxlength="20">
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Message <span class="required" aria-hidden="true">*</span></label>
+                    <textarea id="message" name="message" rows="6" placeholder="Write your query or issue here..." required minlength="10" maxlength="1000" aria-describedby="messageHint"></textarea>
+                    <small class="field-hint" id="messageHint">Tell us what you need help with (at least 10 characters).</small>
+                </div>
+
+                <button type="submit" id="submitBtn" class="submit-btn">Send Inquiry</button>
+                <p id="formStatus" class="form-status" role="status" aria-live="polite"></p>
+                <noscript><p class="form-status error">JavaScript needs to be switched on to send this form.</p></noscript>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy;ST10512970</p>
+        <p id="datetime"></p>
+        
+    </footer>
+    <script>
+        // JavaScript code for the live clock
+        function updateDateTime() {
+            const now = new Date();
+            const options = { 
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric', 
+                hour: '2-digit', 
+                minute: '2-digit', 
+                second: '2-digit'
+            };
+            document.getElementById('datetime').textContent = now.toLocaleDateString('en-US', options);
+        }
+        // Update the clock every second
+        updateDateTime(); // Initial call to display the clock immediately
+        setInterval(updateDateTime, 1000);
+    </script>
+
+    
+</body>
+</html>
